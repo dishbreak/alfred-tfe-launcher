@@ -10,8 +10,13 @@ type SetupCmd struct {
 	Validate ValidateCmd `cmd:"validate" help:"Test API access."`
 }
 
+type WorkspaceCmd struct {
+	List WorkspaceListCmd `cmd:"list" help:"List TFE workspaces."`
+}
+
 type Cli struct {
-	Setup SetupCmd `cmd:"setup" help:"Commands for setting up API access."`
+	Setup      SetupCmd     `cmd:"setup" help:"Commands for setting up API access."`
+	Workspaces WorkspaceCmd `cmd:"workspaces" help:"Commands for working with workspaces"`
 }
 
 func main() {

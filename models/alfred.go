@@ -3,7 +3,6 @@ package models
 import (
 	"encoding/json"
 	"io"
-	"log"
 	"os"
 )
 
@@ -12,6 +11,7 @@ type ListItem struct {
 	Title    string `json:"title"`
 	Subtitle string `json:"subtitle"`
 	Arg      string `json:"arg"`
+	Valid    bool   `json:"valid"`
 }
 
 // ScriptResponse represents a list of items that the script filter will provide to Alfred.
@@ -45,20 +45,20 @@ func (sr *ScriptResponse) AddItem(item ListItem) {
 	sr.Items = append(sr.Items, item)
 }
 
+// SetError will write the error back to Alfred.
+// Callers must return after calling this function!
+func (sr *ScriptResponse) SetError(err error) {
+	sr.Items = []ListItem{
+		{
+			Title:    "Encountered Error!",
+			Subtitle: err.Error(),
+			Valid:    false,
+		},
+	}
+	sr.SendFeedback()
+}
+
 func (sr *ScriptResponse) SendFeedback() {
 	encoder := json.NewEncoder(sr.output)
-
-	// the odds of an encoder faliure are tiny.
-	if err := encoder.Encode(sr); err != nil {
-		errResponse := &ScriptResponse{
-			Items: []ListItem{
-				{
-					Title:    "Encoding Error!",
-					Subtitle: err.Error(),
-				},
-			},
-		}
-		encoder.Encode(errResponse)
-		log.Println(err)
-	}
+	encoder.Encode(sr)
 }

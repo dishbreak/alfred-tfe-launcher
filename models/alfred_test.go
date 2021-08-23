@@ -30,6 +30,6 @@ func TestScriptResponseAddItems(t *testing.T) {
 	})
 
 	sr.SendFeedback()
-	assert.Equal(t, `{"items":[{"title":"foo","subtitle":"bar","arg":"fool"}]}
+	assert.Equal(t, `{"items":[{"title":"foo","subtitle":"bar","arg":"fool","valid":false}]}
 `, output.String())
 }
