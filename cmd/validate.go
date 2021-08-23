@@ -2,13 +2,14 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/dishbreak/terraform-cloud-launcher/lib"
-	"github.com/gen2brain/beeep"
 )
 
 type ValidateCmd struct{}
 
+// Help will display additional help text for viewing at the command line.
 func (v *ValidateCmd) Help() string {
 	return `
 Checks the currently logged in account and verifies its ability to access TFE API. 
@@ -16,17 +17,22 @@ If successful, emits a notification to macOS with the name of the user.
 `
 }
 
+// Run will attempt to construct a client using the saved token.
+// This function is intended to return nil no matter what, because Alfred will
+// handle errors downstream.
 func (v *ValidateCmd) Run(ctx *Context) error {
 	client, err := lib.NewTfeClient()
 	if err != nil {
-		return err
+		fmt.Print("failed," + err.Error())
+		return nil
 	}
 
 	user, err := client.Users.ReadCurrent(context.Background())
 	if err != nil {
-		beeep.Alert("Failed to authenticate to TFE", err.Error(), "")
-		return err
+		fmt.Print("failed," + err.Error())
+		return nil
 	}
 
-	return beeep.Notify("Connected to TFE", user.Email+" is a valid user!", "")
+	fmt.Print("ok," + user.Email)
+	return nil
 }

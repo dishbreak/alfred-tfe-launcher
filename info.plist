@@ -8,6 +8,32 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>014FFD1D-9661-4407-B3AB-C5BC86633BB7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>535727FD-00DE-4F38-87BD-29295C02F36B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>05A7DD4B-44D5-4E9C-8C6C-3EC429110C88</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>238AAAEE-4973-4FA0-819B-87DBA134AED3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>071C53EA-D418-4E81-ABC4-18A41AAEA2E7</key>
 		<array>
 			<dict>
@@ -21,11 +47,105 @@
 				<false/>
 			</dict>
 		</array>
+		<key>09694889-7F69-4196-859E-1CD66FA3A7AC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C8C863B7-1BD0-42E8-B323-258DF306D822</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>13E44C21-350B-4D04-B408-04E8DF3AA363</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F97B3F53-AAE2-4C29-B351-2ECA82F41E1C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>D3AEDDE2-F530-4519-A9BD-3BC536095D41</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>67429406-9247-41DE-8178-554D613D1CED</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>F4505325-E166-42A8-87E6-BB0900D0CE46</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>238AAAEE-4973-4FA0-819B-87DBA134AED3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D00ADE1F-FABA-4C32-8FBE-609D95D400F5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>90879E9C-F19B-4AA5-83C8-D0D32A78A921</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>3F99322B-A044-4F94-A83B-3AFF45D22274</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>13E44C21-350B-4D04-B408-04E8DF3AA363</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>535727FD-00DE-4F38-87BD-29295C02F36B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3F99322B-A044-4F94-A83B-3AFF45D22274</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>60BE35D4-9632-4C25-97A4-4695A8DD3CFE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>83708F5E-3A35-4F2A-96E8-0D35F0B69E32</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>67429406-9247-41DE-8178-554D613D1CED</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C22C42F6-1487-436C-B843-F3CBF3565341</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -73,6 +193,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>D00ADE1F-FABA-4C32-8FBE-609D95D400F5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>014FFD1D-9661-4407-B3AB-C5BC86633BB7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Vishal Kotcherlakota</string>
@@ -94,7 +227,7 @@
 				<key>script</key>
 				<string>query=$1
 
-echo -n $query | go run ./cmd/ login</string>
+echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -131,52 +264,51 @@ echo -n $query | go run ./cmd/ login</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>lastpathcomponent</key>
 				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>go run ./cmd/ logout</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Written to System Keychain</string>
+				<key>title</key>
+				<string>TFE API Key Saved!</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>09694889-7F69-4196-859E-1CD66FA3A7AC</string>
+			<string>D00ADE1F-FABA-4C32-8FBE-609D95D400F5</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>fixedorder</key>
-				<false/>
-				<key>items</key>
-				<string>[{"title":"Set API Token","arg":"login","subtitle":"Configure API Access for TFE Launcher"},{"title":"Clear API Token","arg":"logout","subtitle":"Clear API Token for TFE Launcher"},{"title":"Validate API Access","arg":"validate","subtitle":"Check to make sure your access works\/"}]</string>
-				<key>keyword</key>
-				<string>tfesettings</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Adjust settings for TFE launcher</string>
-				<key>title</key>
-				<string>Configure TFE launcher</string>
-				<key>withspace</key>
-				<false/>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>ok!</string>
+						<key>outputlabel</key>
+						<string>set</string>
+						<key>uid</key>
+						<string>90879E9C-F19B-4AA5-83C8-D0D32A78A921</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
+			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>60BE35D4-9632-4C25-97A4-4695A8DD3CFE</string>
+			<string>238AAAEE-4973-4FA0-819B-87DBA134AED3</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -244,9 +376,116 @@ echo -n $query | go run ./cmd/ login</string>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>102</integer>
 				<key>script</key>
+				<string>dist/$(uname -m)/tfe-browser setup logout</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
 				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>09694889-7F69-4196-859E-1CD66FA3A7AC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Removed key from System Keychain</string>
+				<key>title</key>
+				<string>TFE API Key Deleted</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>C8C863B7-1BD0-42E8-B323-258DF306D822</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"Set API Token","arg":"login","subtitle":"Configure API Access for TFE Launcher"},{"title":"Clear API Token","arg":"logout","subtitle":"Clear API Token for TFE Launcher"},{"title":"Validate API Access","arg":"validate","subtitle":"Check to make sure your access works\/"}]</string>
+				<key>keyword</key>
+				<string>tfesettings</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Adjust settings for TFE launcher</string>
+				<key>title</key>
+				<string>Configure TFE launcher</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>60BE35D4-9632-4C25-97A4-4695A8DD3CFE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>seconds</key>
+				<string>3</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.delay</string>
+			<key>uid</key>
+			<string>014FFD1D-9661-4407-B3AB-C5BC86633BB7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Token for {var:split2} accepted</string>
+				<key>title</key>
+				<string>TFE API Key OK!</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>F97B3F53-AAE2-4C29-B351-2ECA82F41E1C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>dist/$(uname -m)/tfe-browser setup validate</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -261,36 +500,221 @@ echo -n $query | go run ./cmd/ login</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Error copied to clipboard</string>
+				<key>title</key>
+				<string>TFE API Key Rejected</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>C22C42F6-1487-436C-B843-F3CBF3565341</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:split1}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>ok</string>
+						<key>outputlabel</key>
+						<string>ok</string>
+						<key>uid</key>
+						<string>D3AEDDE2-F530-4519-A9BD-3BC536095D41</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:split1}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>failed</string>
+						<key>outputlabel</key>
+						<string>failed</string>
+						<key>uid</key>
+						<string>F4505325-E166-42A8-87E6-BB0900D0CE46</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>13E44C21-350B-4D04-B408-04E8DF3AA363</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>delimiter</key>
+				<string>,</string>
+				<key>trimarguments</key>
+				<true/>
+				<key>variableprefix</key>
+				<string>split</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.split</string>
+			<key>uid</key>
+			<string>3F99322B-A044-4F94-A83B-3AFF45D22274</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{var:split2}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>67429406-9247-41DE-8178-554D613D1CED</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>tfews</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Getting results from Terraform API...</string>
+				<key>script</key>
+				<string>dist/$(uname -m)/tfe-browser workspaces list</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Open Terraform Workspace</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>325A7640-19E4-4F7E-AC9F-F2031BAB7B98</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>014FFD1D-9661-4407-B3AB-C5BC86633BB7</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1045</integer>
+			<key>ypos</key>
+			<integer>320</integer>
+		</dict>
 		<key>05A7DD4B-44D5-4E9C-8C6C-3EC429110C88</key>
 		<dict>
 			<key>xpos</key>
 			<integer>830</integer>
 			<key>ypos</key>
-			<integer>160</integer>
+			<integer>175</integer>
 		</dict>
 		<key>071C53EA-D418-4E81-ABC4-18A41AAEA2E7</key>
 		<dict>
 			<key>xpos</key>
 			<integer>670</integer>
 			<key>ypos</key>
-			<integer>160</integer>
+			<integer>175</integer>
 		</dict>
 		<key>09694889-7F69-4196-859E-1CD66FA3A7AC</key>
 		<dict>
 			<key>xpos</key>
 			<integer>670</integer>
 			<key>ypos</key>
-			<integer>290</integer>
+			<integer>295</integer>
+		</dict>
+		<key>13E44C21-350B-4D04-B408-04E8DF3AA363</key>
+		<dict>
+			<key>xpos</key>
+			<integer>930</integer>
+			<key>ypos</key>
+			<integer>420</integer>
+		</dict>
+		<key>238AAAEE-4973-4FA0-819B-87DBA134AED3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>985</integer>
+			<key>ypos</key>
+			<integer>190</integer>
+		</dict>
+		<key>325A7640-19E4-4F7E-AC9F-F2031BAB7B98</key>
+		<dict>
+			<key>xpos</key>
+			<integer>260</integer>
+			<key>ypos</key>
+			<integer>555</integer>
+		</dict>
+		<key>3F99322B-A044-4F94-A83B-3AFF45D22274</key>
+		<dict>
+			<key>xpos</key>
+			<integer>830</integer>
+			<key>ypos</key>
+			<integer>445</integer>
 		</dict>
 		<key>535727FD-00DE-4F38-87BD-29295C02F36B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>660</integer>
+			<integer>670</integer>
 			<key>ypos</key>
 			<integer>415</integer>
 		</dict>
@@ -301,12 +725,47 @@ echo -n $query | go run ./cmd/ login</string>
 			<key>ypos</key>
 			<integer>305</integer>
 		</dict>
+		<key>67429406-9247-41DE-8178-554D613D1CED</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1050</integer>
+			<key>ypos</key>
+			<integer>520</integer>
+		</dict>
 		<key>83708F5E-3A35-4F2A-96E8-0D35F0B69E32</key>
 		<dict>
 			<key>xpos</key>
 			<integer>475</integer>
 			<key>ypos</key>
-			<integer>350</integer>
+			<integer>295</integer>
+		</dict>
+		<key>C22C42F6-1487-436C-B843-F3CBF3565341</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1225</integer>
+			<key>ypos</key>
+			<integer>415</integer>
+		</dict>
+		<key>C8C863B7-1BD0-42E8-B323-258DF306D822</key>
+		<dict>
+			<key>xpos</key>
+			<integer>870</integer>
+			<key>ypos</key>
+			<integer>295</integer>
+		</dict>
+		<key>D00ADE1F-FABA-4C32-8FBE-609D95D400F5</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1100</integer>
+			<key>ypos</key>
+			<integer>180</integer>
+		</dict>
+		<key>F97B3F53-AAE2-4C29-B351-2ECA82F41E1C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>1070</integer>
+			<key>ypos</key>
+			<integer>395</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

@@ -1,6 +1,10 @@
 package main
 
-import "github.com/dishbreak/terraform-cloud-launcher/lib"
+import (
+	"fmt"
+
+	"github.com/dishbreak/terraform-cloud-launcher/lib"
+)
 
 type LogoutCmd struct{}
 
@@ -9,5 +13,10 @@ func (l *LogoutCmd) Help() string {
 }
 
 func (l *LogoutCmd) Run(ctx *Context) error {
-	return lib.ClearToken()
+	if err := lib.ClearToken(); err != nil {
+		fmt.Print("failed -- " + err.Error())
+		return nil
+	}
+	fmt.Print("ok!")
+	return nil
 }
