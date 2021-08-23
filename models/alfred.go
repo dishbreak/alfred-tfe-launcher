@@ -20,28 +20,25 @@ type ScriptResponse struct {
 	output io.Writer
 }
 
-type ScriptResponseOption func(*ScriptResponse) error
+type ScriptResponseOption func(*ScriptResponse)
 
 func WithOutput(writer io.Writer) ScriptResponseOption {
-	return func(sr *ScriptResponse) error {
+	return func(sr *ScriptResponse) {
 		sr.output = writer
-		return nil
 	}
 }
 
-func NewScriptResponse(opts ...ScriptResponseOption) (*ScriptResponse, error) {
+func NewScriptResponse(opts ...ScriptResponseOption) *ScriptResponse {
 	sr := &ScriptResponse{
 		output: os.Stdout,
 		Items:  make([]ListItem, 0),
 	}
 
 	for _, opt := range opts {
-		if err := opt(sr); err != nil {
-			return sr, err
-		}
+		opt(sr)
 	}
 
-	return sr, nil
+	return sr
 }
 
 func (sr *ScriptResponse) AddItem(item ListItem) {

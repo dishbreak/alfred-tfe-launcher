@@ -13,18 +13,15 @@ func badOption(sr *ScriptResponse) error {
 }
 
 func TestNewScriptResponse(t *testing.T) {
-	_, err := NewScriptResponse(badOption)
-	assert.Error(t, err)
 
-	sr, _ := NewScriptResponse()
+	sr := NewScriptResponse()
 	assert.Empty(t, sr.Items)
 }
 
 func TestScriptResponseAddItems(t *testing.T) {
 	output := bytes.NewBufferString("")
 
-	sr, err := NewScriptResponse(WithOutput(output))
-	assert.Nil(t, err, "got error with script response")
+	sr := NewScriptResponse(WithOutput(output))
 
 	sr.AddItem(ListItem{
 		Title:    "foo",
