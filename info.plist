@@ -102,6 +102,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>2E3A88C3-E265-4BBB-8CDA-7CE24A019723</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>071C53EA-D418-4E81-ABC4-18A41AAEA2E7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>325A7640-19E4-4F7E-AC9F-F2031BAB7B98</key>
 		<array>
 			<dict>
@@ -171,7 +184,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>071C53EA-D418-4E81-ABC4-18A41AAEA2E7</string>
+				<string>2E3A88C3-E265-4BBB-8CDA-7CE24A019723</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -233,31 +246,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>query=$1
-
-echo -n $query | dist/$(uname)/tfe-browser setup login</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>05A7DD4B-44D5-4E9C-8C6C-3EC429110C88</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>subtext</key>
@@ -273,6 +261,31 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<string>071C53EA-D418-4E81-ABC4-18A41AAEA2E7</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+
+echo -n $query | dist/$(uname -m)/tfe-browser setup login</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>05A7DD4B-44D5-4E9C-8C6C-3EC429110C88</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -324,6 +337,23 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<string>238AAAEE-4973-4FA0-819B-87DBA134AED3</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>login</string>
+				<key>replacestring</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.replace</string>
+			<key>uid</key>
+			<string>2E3A88C3-E265-4BBB-8CDA-7CE24A019723</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -728,6 +758,13 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<integer>985</integer>
 			<key>ypos</key>
 			<integer>190</integer>
+		</dict>
+		<key>2E3A88C3-E265-4BBB-8CDA-7CE24A019723</key>
+		<dict>
+			<key>xpos</key>
+			<integer>585</integer>
+			<key>ypos</key>
+			<integer>205</integer>
 		</dict>
 		<key>325A7640-19E4-4F7E-AC9F-F2031BAB7B98</key>
 		<dict>
