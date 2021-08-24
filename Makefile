@@ -1,4 +1,7 @@
-.PHONY: tfe-browser test fmt arm64 x86_64
+.PHONY: tfe-browser test fmt arm64 x86_64 release
+
+release: tfe-browser
+	zip tfe-browser.alfredworkflow info.plist icon.png dist/arm64/tfe-browser dist/x86_64/tfe-browser
 
 tfe-browser: test arm64 x86_64
 
