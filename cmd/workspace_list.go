@@ -24,6 +24,35 @@ func paginate(nextPage int) tfe.WorkspaceListOptions {
 	}
 }
 
+type workspaceClient interface {
+	List(context.Context, string, tfe.WorkspaceListOptions) (*tfe.WorkspaceList, error)
+}
+
+type workspaceLister struct {
+	workspaceClient
+}
+
+func (wl *workspaceLister) FetchWorkspaces() ([]models.ListItem, error) {
+	items := make([]models.ListItem, 0)
+	for nextPage := 1; nextPage != 0; {
+		workspaceList, err := wl.List(context.Background(), "nerdwallet", paginate(nextPage))
+		if err != nil {
+			return nil, err
+		}
+		for _, workspace := range workspaceList.Items {
+			items = append(items, models.ListItem{
+				Title:    workspace.Name,
+				Subtitle: workspace.Description,
+				Arg:      workspace.Name,
+				Valid:    true,
+			})
+		}
+		nextPage = workspaceList.NextPage
+	}
+
+	return items, nil
+}
+
 func (w *WorkspaceListCmd) Run(ctx *Context) error {
 	resp := models.NewScriptResponse()
 
@@ -33,21 +62,35 @@ func (w *WorkspaceListCmd) Run(ctx *Context) error {
 		return err
 	}
 
-	for nextPage := 1; nextPage != 0; {
-		workspaceList, err := client.Workspaces.List(context.Background(), "nerdwallet", paginate(nextPage))
-		if err != nil {
-			resp.SetError(err)
-			return err
-		}
-		for _, workspace := range workspaceList.Items {
-			resp.AddItem(models.ListItem{
-				Title:    workspace.Name,
-				Subtitle: workspace.Description,
-				Arg:      workspace.Name,
-				Valid:    true,
-			})
-		}
-		nextPage = workspaceList.NextPage
+	settings, err := lib.NewSettings()
+	if err != nil {
+		resp.SetError(err)
+		return err
+	}
+
+	if err := settings.Load(); err != nil {
+		resp.SetError(err)
+		return err
+	}
+
+	lister := &workspaceLister{
+		workspaceClient: client.Workspaces,
+	}
+
+	wsCache, err := lib.NewCache("workspaces", settings.CacheTimeout, lister.FetchWorkspaces)
+	if err != nil {
+		resp.SetError(err)
+		return err
+	}
+
+	items, err := wsCache.Get()
+	if err != nil {
+		resp.SetError(err)
+		return err
+	}
+
+	for _, item := range items {
+		resp.AddItem(item)
 	}
 
 	resp.SendFeedback()
