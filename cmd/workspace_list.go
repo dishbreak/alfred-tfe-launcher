@@ -62,11 +62,28 @@ func (w *WorkspaceListCmd) Run(ctx *Context) error {
 		return err
 	}
 
+	settings, err := lib.NewSettings()
+	if err != nil {
+		resp.SetError(err)
+		return err
+	}
+
+	if err := settings.Load(); err != nil {
+		resp.SetError(err)
+		return err
+	}
+
 	lister := &workspaceLister{
 		workspaceClient: client.Workspaces,
 	}
 
-	items, err := lister.FetchWorkspaces()
+	wsCache, err := lib.NewCache("workspaces", settings.CacheTimeout, lister.FetchWorkspaces)
+	if err != nil {
+		resp.SetError(err)
+		return err
+	}
+
+	items, err := wsCache.Get()
 	if err != nil {
 		resp.SetError(err)
 		return err

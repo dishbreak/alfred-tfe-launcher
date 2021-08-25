@@ -44,7 +44,7 @@ func (s *Settings) Load() error {
 }
 
 func (s *Settings) Save() error {
-	if err := os.MkdirAll(path.Base(s.filePath), 0700); err != nil {
+	if err := os.MkdirAll(path.Dir(s.filePath), 0700); err != nil {
 		return err
 	}
 

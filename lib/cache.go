@@ -5,19 +5,25 @@ import (
 	"os"
 	"os/user"
 	"path"
+	"time"
 
 	"github.com/dishbreak/terraform-cloud-launcher/models"
 )
 
 type ItemCache struct {
 	Items           []models.ListItem `json:"items"`
-	ExpiryTime      int               `json:"expiryTime"`
+	ExpiryTime      int64             `json:"expiryTime"`
+	timeout         int
 	refreshCallback func() ([]models.ListItem, error)
 	filePath        string
 }
 
-func NewCache(name string, timeout int, callback func() []models.ListItem) (*ItemCache, error) {
-	c := &ItemCache{}
+func NewCache(name string, timeout int, callback func() ([]models.ListItem, error)) (*ItemCache, error) {
+	c := &ItemCache{
+		timeout:         timeout,
+		refreshCallback: callback,
+		ExpiryTime:      -1,
+	}
 
 	current, err := user.Current()
 	if err != nil {
@@ -29,11 +35,16 @@ func NewCache(name string, timeout int, callback func() []models.ListItem) (*Ite
 }
 
 func (c *ItemCache) Get() ([]models.ListItem, error) {
-
+	err := c.refresh(false)
+	if err != nil {
+		return nil, err
+	}
+	return c.Items, nil
 }
 
 func (c *ItemCache) save() error {
-	err := os.MkdirAll(path.Base(c.filePath), 0700)
+	c.ExpiryTime = (int64(c.timeout)) + time.Now().Unix()
+	err := os.MkdirAll(path.Dir(c.filePath), 0700)
 	if err != nil {
 		return err
 	}
@@ -48,15 +59,20 @@ func (c *ItemCache) save() error {
 	return encoder.Encode(c)
 }
 
+func (c *ItemCache) expired() bool {
+	return c.timeout != 0 && c.ExpiryTime < time.Now().Unix()
+}
+
 func (c *ItemCache) refresh(force bool) error {
 	if fp, err := os.Open(c.filePath); err == nil {
-		defer fp.Close()
 		decoder := json.NewDecoder(fp)
 		err := decoder.Decode(c)
+		fp.Close()
 		if err != nil {
 			return err
 		}
-	} else {
+	}
+	if force || c.expired() {
 		items, err := c.refreshCallback()
 		if err != nil {
 			return err
@@ -64,5 +80,6 @@ func (c *ItemCache) refresh(force bool) error {
 		c.Items = items
 		return c.save()
 	}
+
 	return nil
 }
