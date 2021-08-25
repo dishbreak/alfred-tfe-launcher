@@ -233,6 +233,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>subtext</key>
+				<string>User settings --&gt; Tokens</string>
+				<key>text</key>
+				<string>Enter TF API Token</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>071C53EA-D418-4E81-ABC4-18A41AAEA2E7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -254,25 +273,6 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<string>05A7DD4B-44D5-4E9C-8C6C-3EC429110C88</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>subtext</key>
-				<string>User settings --&gt; Tokens</string>
-				<key>text</key>
-				<string>Enter TF API Token</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>071C53EA-D418-4E81-ABC4-18A41AAEA2E7</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -807,6 +807,8 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<integer>395</integer>
 		</dict>
 	</dict>
+	<key>version</key>
+	<!-- version tag --><string>0.1.0</string>
 	<key>webaddress</key>
 	<string>kotcherlakota.org</string>
 </dict>
