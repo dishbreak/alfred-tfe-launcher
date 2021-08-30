@@ -1,4 +1,4 @@
-package models
+package lib
 
 import (
 	"bytes"
@@ -8,20 +8,20 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func badOption(sr *ScriptResponse) error {
+func badOption(sr *ScriptFilterResponse) error {
 	return errors.New("boooo!")
 }
 
-func TestNewScriptResponse(t *testing.T) {
+func TestNewScriptFilterResponse(t *testing.T) {
 
-	sr := NewScriptResponse()
+	sr := NewScriptFilterResponse()
 	assert.Empty(t, sr.Items)
 }
 
-func TestScriptResponseAddItems(t *testing.T) {
+func TestScriptFilterResponseAddItems(t *testing.T) {
 	output := bytes.NewBufferString("")
 
-	sr := NewScriptResponse(WithOutput(output))
+	sr := NewScriptFilterResponse(ScriptFilterWithOutput(output))
 
 	sr.AddItem(ListItem{
 		Title:    "foo",

@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/dishbreak/terraform-cloud-launcher/lib"
-	"github.com/dishbreak/terraform-cloud-launcher/models"
 	"github.com/hashicorp/go-tfe"
 )
 
@@ -32,15 +31,15 @@ type workspaceLister struct {
 	workspaceClient
 }
 
-func (wl *workspaceLister) FetchWorkspaces() ([]models.ListItem, error) {
-	items := make([]models.ListItem, 0)
+func (wl *workspaceLister) FetchWorkspaces() ([]lib.ListItem, error) {
+	items := make([]lib.ListItem, 0)
 	for nextPage := 1; nextPage != 0; {
 		workspaceList, err := wl.List(context.Background(), "nerdwallet", paginate(nextPage))
 		if err != nil {
 			return nil, err
 		}
 		for _, workspace := range workspaceList.Items {
-			items = append(items, models.ListItem{
+			items = append(items, lib.ListItem{
 				Title:    workspace.Name,
 				Subtitle: workspace.Description,
 				Arg:      workspace.Name,
@@ -54,7 +53,7 @@ func (wl *workspaceLister) FetchWorkspaces() ([]models.ListItem, error) {
 }
 
 func (w *WorkspaceListCmd) Run(ctx *Context) error {
-	resp := models.NewScriptResponse()
+	resp := lib.NewScriptFilterResponse()
 
 	client, err := lib.NewTfeClient()
 	if err != nil {

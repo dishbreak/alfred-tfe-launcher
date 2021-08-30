@@ -115,24 +115,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>3F99322B-A044-4F94-A83B-3AFF45D22274</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>13E44C21-350B-4D04-B408-04E8DF3AA363</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>535727FD-00DE-4F38-87BD-29295C02F36B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3F99322B-A044-4F94-A83B-3AFF45D22274</string>
+				<string>13E44C21-350B-4D04-B408-04E8DF3AA363</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -302,13 +289,13 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 				<array>
 					<dict>
 						<key>inputstring</key>
-						<string></string>
+						<string>{var:status}</string>
 						<key>matchcasesensitive</key>
 						<false/>
 						<key>matchmode</key>
 						<integer>0</integer>
 						<key>matchstring</key>
-						<string>ok!</string>
+						<string>ok</string>
 						<key>outputlabel</key>
 						<string>set</string>
 						<key>uid</key>
@@ -322,6 +309,50 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
 			<string>238AAAEE-4973-4FA0-819B-87DBA134AED3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>dist/$(uname -m)/tfe-browser setup logout</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>09694889-7F69-4196-859E-1CD66FA3A7AC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Removed key from System Keychain</string>
+				<key>title</key>
+				<string>TFE API Key Deleted</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>C8C863B7-1BD0-42E8-B323-258DF306D822</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -386,50 +417,6 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>dist/$(uname -m)/tfe-browser setup logout</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>09694889-7F69-4196-859E-1CD66FA3A7AC</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>Removed key from System Keychain</string>
-				<key>title</key>
-				<string>TFE API Key Deleted</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>C8C863B7-1BD0-42E8-B323-258DF306D822</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -479,7 +466,7 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
-				<string>Token for {var:split2} accepted</string>
+				<string>Token for {var:user} accepted</string>
 				<key>title</key>
 				<string>TFE API Key OK!</string>
 			</dict>
@@ -541,7 +528,7 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 				<array>
 					<dict>
 						<key>inputstring</key>
-						<string>{var:split1}</string>
+						<string>{var:status}</string>
 						<key>matchcasesensitive</key>
 						<false/>
 						<key>matchmode</key>
@@ -555,7 +542,7 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 					</dict>
 					<dict>
 						<key>inputstring</key>
-						<string>{var:split1}</string>
+						<string>{var:status}</string>
 						<key>matchcasesensitive</key>
 						<false/>
 						<key>matchmode</key>
@@ -581,27 +568,10 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>delimiter</key>
-				<string>,</string>
-				<key>trimarguments</key>
-				<true/>
-				<key>variableprefix</key>
-				<string>split</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.split</string>
-			<key>uid</key>
-			<string>3F99322B-A044-4F94-A83B-3AFF45D22274</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>autopaste</key>
 				<false/>
 				<key>clipboardtext</key>
-				<string>{var:split2}</string>
+				<string>{var:message_body}</string>
 				<key>ignoredynamicplaceholders</key>
 				<false/>
 				<key>transient</key>
@@ -736,13 +706,6 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<key>ypos</key>
 			<integer>555</integer>
 		</dict>
-		<key>3F99322B-A044-4F94-A83B-3AFF45D22274</key>
-		<dict>
-			<key>xpos</key>
-			<integer>830</integer>
-			<key>ypos</key>
-			<integer>445</integer>
-		</dict>
 		<key>535727FD-00DE-4F38-87BD-29295C02F36B</key>
 		<dict>
 			<key>xpos</key>
@@ -808,7 +771,7 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 		</dict>
 	</dict>
 	<key>version</key>
-	<!-- version tag --><string>0.1.0</string>
+	<!-- version tag --><string>0.2.0</string>
 	<key>webaddress</key>
 	<string>kotcherlakota.org</string>
 </dict>

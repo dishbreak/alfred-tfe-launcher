@@ -6,19 +6,17 @@ import (
 	"os/user"
 	"path"
 	"time"
-
-	"github.com/dishbreak/terraform-cloud-launcher/models"
 )
 
 type ItemCache struct {
-	Items           []models.ListItem `json:"items"`
-	ExpiryTime      int64             `json:"expiryTime"`
+	Items           []ListItem `json:"items"`
+	ExpiryTime      int64      `json:"expiryTime"`
 	timeout         int
-	refreshCallback func() ([]models.ListItem, error)
+	refreshCallback func() ([]ListItem, error)
 	filePath        string
 }
 
-func NewCache(name string, timeout int, callback func() ([]models.ListItem, error)) (*ItemCache, error) {
+func NewCache(name string, timeout int, callback func() ([]ListItem, error)) (*ItemCache, error) {
 	c := &ItemCache{
 		timeout:         timeout,
 		refreshCallback: callback,
@@ -34,7 +32,7 @@ func NewCache(name string, timeout int, callback func() ([]models.ListItem, erro
 	return c, nil
 }
 
-func (c *ItemCache) Get() ([]models.ListItem, error) {
+func (c *ItemCache) Get() ([]ListItem, error) {
 	err := c.refresh(false)
 	if err != nil {
 		return nil, err

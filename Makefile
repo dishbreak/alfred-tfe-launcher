@@ -1,6 +1,6 @@
 .PHONY: tfe-browser test fmt arm64 x86_64 release verify_version
 
-version = 0.1.0
+version = 0.2.0
 
 release: tfe-browser
 	zip tfe-browser-$(version).alfredworkflow info.plist icon.png dist/arm64/tfe-browser dist/x86_64/tfe-browser
@@ -27,7 +27,7 @@ x86_64: dist/x86_64/
 	GOOS="darwin" GOARCH="amd64" go build -o dist/x86_64/tfe-browser ./cmd/ 
 
 dist/x86_64/: dist/
-	mkdir -p dist/
+	mkdir -p dist/x86_64/
 
 dist/:
 	mkdir -p dist/

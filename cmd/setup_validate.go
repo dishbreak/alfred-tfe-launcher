@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/dishbreak/terraform-cloud-launcher/lib"
 )
@@ -18,21 +17,25 @@ If successful, emits a notification to macOS with the name of the user.
 }
 
 // Run will attempt to construct a client using the saved token.
-// This function is intended to return nil no matter what, because Alfred will
-// handle errors downstream.
 func (v *ValidateCmd) Run(ctx *Context) error {
+	resp := lib.NewScriptActionResponse()
+
+	// This function is intended to return nil no matter what, because Alfred will
+	// handle errors downstream.
+	defer resp.RecoverIfErr()
+
 	client, err := lib.NewTfeClient()
 	if err != nil {
-		fmt.Print("failed," + err.Error())
-		return nil
+		panic(err)
 	}
 
 	user, err := client.Users.ReadCurrent(context.Background())
 	if err != nil {
-		fmt.Print("failed," + err.Error())
-		return nil
+		panic(err)
 	}
 
-	fmt.Print("ok," + user.Email)
+	resp.SetVariable(lib.ExecStatus, lib.StatusOk)
+	resp.SetVariable("user", user.Email)
+	resp.SendFeedback()
 	return nil
 }
