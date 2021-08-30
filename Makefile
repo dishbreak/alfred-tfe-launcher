@@ -1,18 +1,12 @@
-.PHONY: tfe-browser test fmt arm64 x86_64 release verify_version
-
-version = 0.2.0
+.PHONY: tfe-browser test fmt arm64 x86_64 release
 
 release: tfe-browser
 	zip tfe-browser-$(version).alfredworkflow info.plist icon.png dist/arm64/tfe-browser dist/x86_64/tfe-browser
 
-tfe-browser: verify_version test arm64 x86_64
-
-verify_version:
-	grep "<!-- version tag --><string>$(version)</string>" info.plist
+tfe-browser: test arm64 x86_64
 
 test: fmt
 	go test ./...
-	grep "<!-- version tag --><string>$(version)</string>" info.plist
 
 fmt:
 	go fmt ./...

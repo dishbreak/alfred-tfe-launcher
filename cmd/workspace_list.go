@@ -42,8 +42,13 @@ func (wl *workspaceLister) FetchWorkspaces() ([]lib.ListItem, error) {
 			items = append(items, lib.ListItem{
 				Title:    workspace.Name,
 				Subtitle: workspace.Description,
-				Arg:      workspace.Name,
+				Arg:      "",
 				Valid:    true,
+				Variables: map[string]string{
+					"workspace_id":   workspace.ID,
+					"workspace_name": workspace.Name,
+					"workspace":      workspace.SourceURL,
+				},
 			})
 		}
 		nextPage = workspaceList.NextPage
@@ -54,22 +59,20 @@ func (wl *workspaceLister) FetchWorkspaces() ([]lib.ListItem, error) {
 
 func (w *WorkspaceListCmd) Run(ctx *Context) error {
 	resp := lib.NewScriptFilterResponse()
+	defer lib.RecoverIfErr(resp)
 
 	client, err := lib.NewTfeClient()
 	if err != nil {
-		resp.SetError(err)
-		return err
+		panic(err)
 	}
 
 	settings, err := lib.NewSettings()
 	if err != nil {
-		resp.SetError(err)
-		return err
+		panic(err)
 	}
 
 	if err := settings.Load(); err != nil {
-		resp.SetError(err)
-		return err
+		panic(err)
 	}
 
 	lister := &workspaceLister{
@@ -78,14 +81,12 @@ func (w *WorkspaceListCmd) Run(ctx *Context) error {
 
 	wsCache, err := lib.NewCache("workspaces", settings.CacheTimeout, lister.FetchWorkspaces)
 	if err != nil {
-		resp.SetError(err)
-		return err
+		panic(err)
 	}
 
 	items, err := wsCache.Get()
 	if err != nil {
-		resp.SetError(err)
-		return err
+		panic(err)
 	}
 
 	for _, item := range items {

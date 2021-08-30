@@ -22,7 +22,7 @@ func (v *ValidateCmd) Run(ctx *Context) error {
 
 	// This function is intended to return nil no matter what, because Alfred will
 	// handle errors downstream.
-	defer resp.RecoverIfErr()
+	defer lib.RecoverIfErr(resp)
 
 	client, err := lib.NewTfeClient()
 	if err != nil {

@@ -60,6 +60,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>1254B4D5-DFE7-48FE-8006-D4B5C3BF3DBA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BC55FDD5-DA24-4F82-B49C-36457DFF2A56</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>13E44C21-350B-4D04-B408-04E8DF3AA363</key>
 		<array>
 			<dict>
@@ -106,7 +119,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>59B270A7-2B06-467A-9FAC-517D2DD5925C</string>
+				<string>1254B4D5-DFE7-48FE-8006-D4B5C3BF3DBA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -189,6 +202,19 @@
 				<string></string>
 				<key>sourceoutputuid</key>
 				<string>375DFEB2-0892-4409-BAB3-3498E5E64A5B</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>BC55FDD5-DA24-4F82-B49C-36457DFF2A56</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>59B270A7-2B06-467A-9FAC-517D2DD5925C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -371,7 +397,7 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 						<key>matchstring</key>
 						<string>login</string>
 						<key>outputlabel</key>
-						<string>login</string>
+						<string></string>
 						<key>uid</key>
 						<string>17B0416C-6245-477F-A28A-C26D665D4B83</string>
 					</dict>
@@ -385,7 +411,7 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 						<key>matchstring</key>
 						<string>logout</string>
 						<key>outputlabel</key>
-						<string>logout</string>
+						<string></string>
 						<key>uid</key>
 						<string>012C5121-B56A-4C9E-919D-B4E685FE8CAF</string>
 					</dict>
@@ -399,13 +425,13 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 						<key>matchstring</key>
 						<string>validate</string>
 						<key>outputlabel</key>
-						<string>validate</string>
+						<string></string>
 						<key>uid</key>
 						<string>375DFEB2-0892-4409-BAB3-3498E5E64A5B</string>
 					</dict>
 				</array>
 				<key>elselabel</key>
-				<string>else</string>
+				<string></string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.conditional</string>
@@ -636,12 +662,39 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>fixedorder</key>
+				<false/>
+				<key>items</key>
+				<string>[{"title":"Workspace Home","arg":"\/"},{"title":"Runs","arg":"\/runs"},{"title":"Settings","arg":"\/settings\/general"},{"title":"Lock","arg":"\/settings\/lock"}]</string>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.listfilter</string>
+			<key>uid</key>
+			<string>BC55FDD5-DA24-4F82-B49C-36457DFF2A56</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>https://app.terraform.io/app/nerdwallet/workspaces/{query}</string>
+				<string>https://app.terraform.io/app/nerdwallet/workspaces/{var:workspace_name}{query}</string>
 				<key>utf8</key>
 				<true/>
 			</dict>
@@ -649,6 +702,23 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>59B270A7-2B06-467A-9FAC-517D2DD5925C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>1254B4D5-DFE7-48FE-8006-D4B5C3BF3DBA</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -685,6 +755,13 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<key>ypos</key>
 			<integer>295</integer>
 		</dict>
+		<key>1254B4D5-DFE7-48FE-8006-D4B5C3BF3DBA</key>
+		<dict>
+			<key>xpos</key>
+			<integer>420</integer>
+			<key>ypos</key>
+			<integer>590</integer>
+		</dict>
 		<key>13E44C21-350B-4D04-B408-04E8DF3AA363</key>
 		<dict>
 			<key>xpos</key>
@@ -704,7 +781,7 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<key>xpos</key>
 			<integer>260</integer>
 			<key>ypos</key>
-			<integer>555</integer>
+			<integer>560</integer>
 		</dict>
 		<key>535727FD-00DE-4F38-87BD-29295C02F36B</key>
 		<dict>
@@ -716,9 +793,9 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 		<key>59B270A7-2B06-467A-9FAC-517D2DD5925C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>470</integer>
+			<integer>670</integer>
 			<key>ypos</key>
-			<integer>555</integer>
+			<integer>560</integer>
 		</dict>
 		<key>60BE35D4-9632-4C25-97A4-4695A8DD3CFE</key>
 		<dict>
@@ -740,6 +817,13 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 			<integer>475</integer>
 			<key>ypos</key>
 			<integer>295</integer>
+		</dict>
+		<key>BC55FDD5-DA24-4F82-B49C-36457DFF2A56</key>
+		<dict>
+			<key>xpos</key>
+			<integer>495</integer>
+			<key>ypos</key>
+			<integer>560</integer>
 		</dict>
 		<key>C22C42F6-1487-436C-B843-F3CBF3565341</key>
 		<dict>
@@ -771,7 +855,7 @@ echo -n $query | dist/$(uname)/tfe-browser setup login</string>
 		</dict>
 	</dict>
 	<key>version</key>
-	<!-- version tag --><string>0.2.0</string>
+	<string>0.3.0</string>
 	<key>webaddress</key>
 	<string>kotcherlakota.org</string>
 </dict>

@@ -35,7 +35,7 @@ func (l *LoginCmd) Run(ctx *Context) error {
 
 	// This command is intended to never return an error. Alfred will read stdout
 	// and handle errors within the workflow.
-	defer resp.RecoverIfErr()
+	defer lib.RecoverIfErr(resp)
 
 	if stat, _ := os.Stdin.Stat(); (stat.Mode() & os.ModeCharDevice) == 0 {
 		b, err := ioutil.ReadAll(os.Stdin)

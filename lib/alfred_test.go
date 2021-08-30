@@ -24,12 +24,13 @@ func TestScriptFilterResponseAddItems(t *testing.T) {
 	sr := NewScriptFilterResponse(ScriptFilterWithOutput(output))
 
 	sr.AddItem(ListItem{
-		Title:    "foo",
-		Subtitle: "bar",
-		Arg:      "fool",
+		Title:     "foo",
+		Subtitle:  "bar",
+		Arg:       "fool",
+		Variables: map[string]string{},
 	})
 
 	sr.SendFeedback()
-	assert.Equal(t, `{"items":[{"title":"foo","subtitle":"bar","arg":"fool","valid":false}]}
+	assert.Equal(t, `{"items":[{"title":"foo","subtitle":"bar","arg":"fool","valid":false,"variables":{}}]}
 `, output.String())
 }

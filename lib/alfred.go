@@ -7,12 +7,18 @@ import (
 	"os"
 )
 
+type Response interface {
+	SetError(error)
+	SendFeedback()
+}
+
 // ListItem represents a single item in the script filter.
 type ListItem struct {
-	Title    string `json:"title"`
-	Subtitle string `json:"subtitle"`
-	Arg      string `json:"arg"`
-	Valid    bool   `json:"valid"`
+	Title     string            `json:"title"`
+	Subtitle  string            `json:"subtitle"`
+	Arg       string            `json:"arg"`
+	Valid     bool              `json:"valid"`
+	Variables map[string]string `json:"variables"`
 }
 
 // ScriptFilterResponse represents a list of items that the script filter will provide to Alfred.
@@ -111,12 +117,14 @@ func (a *ScriptActionResponse) SetError(err error) {
 	a.SendFeedback()
 }
 
-func (a *ScriptActionResponse) RecoverIfErr() {
-	if r := recover(); r != nil {
-		if err, ok := r.(error); ok {
-			a.SetError(err)
-		} else {
-			a.SetError(errors.New("undefined error"))
+func RecoverIfErr(a Response) func() {
+	return func() {
+		if r := recover(); r != nil {
+			if err, ok := r.(error); ok {
+				a.SetError(err)
+			} else {
+				a.SetError(errors.New("undefined error"))
+			}
 		}
 	}
 }
