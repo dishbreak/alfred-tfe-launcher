@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/dishbreak/terraform-cloud-launcher/lib"
-	"github.com/dishbreak/terraform-cloud-launcher/models"
 	"github.com/hashicorp/go-tfe"
 )
 
@@ -24,30 +23,74 @@ func paginate(nextPage int) tfe.WorkspaceListOptions {
 	}
 }
 
-func (w *WorkspaceListCmd) Run(ctx *Context) error {
-	resp := models.NewScriptResponse()
+type workspaceClient interface {
+	List(context.Context, string, tfe.WorkspaceListOptions) (*tfe.WorkspaceList, error)
+}
 
-	client, err := lib.NewTfeClient()
-	if err != nil {
-		resp.SetError(err)
-		return err
-	}
+type workspaceLister struct {
+	workspaceClient
+}
 
+func (wl *workspaceLister) FetchWorkspaces() ([]lib.ListItem, error) {
+	items := make([]lib.ListItem, 0)
 	for nextPage := 1; nextPage != 0; {
-		workspaceList, err := client.Workspaces.List(context.Background(), "nerdwallet", paginate(nextPage))
+		workspaceList, err := wl.List(context.Background(), "nerdwallet", paginate(nextPage))
 		if err != nil {
-			resp.SetError(err)
-			return err
+			return nil, err
 		}
 		for _, workspace := range workspaceList.Items {
-			resp.AddItem(models.ListItem{
+			items = append(items, lib.ListItem{
 				Title:    workspace.Name,
 				Subtitle: workspace.Description,
-				Arg:      workspace.Name,
+				Arg:      "",
 				Valid:    true,
+				Variables: map[string]string{
+					"workspace_id":   workspace.ID,
+					"workspace_name": workspace.Name,
+					"workspace":      workspace.SourceURL,
+				},
 			})
 		}
 		nextPage = workspaceList.NextPage
+	}
+
+	return items, nil
+}
+
+func (w *WorkspaceListCmd) Run(ctx *Context) error {
+	resp := lib.NewScriptFilterResponse()
+	defer lib.RecoverIfErr(resp)
+
+	client, err := lib.NewTfeClient()
+	if err != nil {
+		panic(err)
+	}
+
+	settings, err := lib.NewSettings()
+	if err != nil {
+		panic(err)
+	}
+
+	if err := settings.Load(); err != nil {
+		panic(err)
+	}
+
+	lister := &workspaceLister{
+		workspaceClient: client.Workspaces,
+	}
+
+	wsCache, err := lib.NewCache(lib.CacheWorkspace, settings.CacheTimeout, lister.FetchWorkspaces)
+	if err != nil {
+		panic(err)
+	}
+
+	items, err := wsCache.Get()
+	if err != nil {
+		panic(err)
+	}
+
+	for _, item := range items {
+		resp.AddItem(item)
 	}
 
 	resp.SendFeedback()
