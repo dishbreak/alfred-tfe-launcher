@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Validate token",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${fileDirname}",
+            "args": ["setup", "validate"]
+        },
+        {
             "name": "List workspaces",
             "type": "go",
             "request": "launch",

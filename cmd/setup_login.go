@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -28,15 +29,18 @@ When run outside of a pipe, the command will prompt you for a token on input.
 }
 
 // Run will save the TFE token to the System Keychain.
-// This command is intended to never return an error. Alfred will read stdout
-// and handle errors within the workflow.
 func (l *LoginCmd) Run(ctx *Context) error {
 	var token string
+	resp := lib.NewScriptActionResponse()
+
+	// This command is intended to never return an error. Alfred will read stdout
+	// and handle errors within the workflow.
+	defer lib.RecoverIfErr(resp)
+
 	if stat, _ := os.Stdin.Stat(); (stat.Mode() & os.ModeCharDevice) == 0 {
 		b, err := ioutil.ReadAll(os.Stdin)
 		if err != nil {
-			fmt.Print("failed -- " + err.Error())
-			return nil
+			panic(err)
 		}
 		token = string(b)
 	} else {
@@ -48,14 +52,13 @@ func (l *LoginCmd) Run(ctx *Context) error {
 	token = strings.TrimSpace(token)
 
 	if len(token) == 0 {
-		fmt.Print("failed -- cowardly refusing to set an empty token")
-		return nil
+		panic(errors.New("cowardly refusing to set an empty token"))
 	}
 
 	if err := lib.SetToken(token); err != nil {
-		fmt.Print("failed -- " + err.Error())
-		return nil
+		panic(err)
 	}
-	fmt.Print("ok!")
+	resp.SetVariable(lib.ExecStatus, lib.StatusOk)
+	resp.SendFeedback()
 	return nil
 }
